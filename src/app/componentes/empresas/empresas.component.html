@@ -1,0 +1,77 @@
+<div id="head-pri">
+    <h1>EMPRESAS</h1>
+
+    <!-- Button trigger modal -->
+    <button type="button" id="btnagregar" data-bs-toggle="modal" data-bs-target="#agregarmodal">Agregar Empresa</button>
+
+
+   <!-- Modal agregar-->
+   <div class="modal fade" id="agregarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ingresar Empresa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">nombre de la empresa</label>
+              <input type="text" id="imputNombre" class="form-control" name="nombreEmpresa" #nombreEmpresa="ngModel"
+              [(ngModel)]="empresaModelPost.nombreEmpresa" >
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postEmpresa()" >Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Modal Actualizar-->
+  <div class="modal fade" id="actializarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">nombre empresa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">nombre empresa</label>
+            <input type="text" id="imputNombreProducto" class="form-control" name="nombreProducto"#nombreProducto="ngModel"
+            [(ngModel)]="empresaModelGetId.nombreEmpresa"
+           >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="putProductos()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+
+    <div class="card" *ngFor="let empre of empresasModelGet" >
+
+      <div class="card-body" >
+        <h4>{{empre.nombreEmpresa}}</h4>
+
+        <div class ="btncrud" justify-content-center>
+          <button id="actu"  data-bs-toggle="modal" data-bs-target="#actializarmodal" (click)=" getEmpresaId(empre._id)">Actializar</button>
+          <button type="button" id="elimi" (click)="deleteEmpresa(empre._id)">Eliminar</button>
+          <button type="button" id="ver" >ver</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
